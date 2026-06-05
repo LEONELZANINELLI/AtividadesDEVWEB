@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade - HTML e CSS: Formulário</title>
+    
+    <style>
+        /* --- Configurações Globais --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* --- Requisito: Formulário Centralizado e Layout Organizado --- */
+        .form-container {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 600px; /* Garante boa legibilidade */
+            padding: 30px;
+            border-radius: 12px; /* Requisito: Bordas arredondadas */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333333;
+            margin-bottom: 25px;
+            font-size: 1.6rem;
+        }
+
+        /* --- Requisito: Campos Organizados --- */
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            margin-bottom: 8px;
+            color: #444444;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* Input text, email, password, date, select e textarea */
+        .form-control {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid #ccc;
+            border-radius: 6px; /* Requisito: Bordas arredondadas */
+            font-size: 1rem;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        /* Requisito: Efeito ao focar (:focus) */
+        .form-control:focus {
+            outline: none;
+            border-color: #0066cc;
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.2);
+            background-color: #fafafa;
+        }
+
+        /* Estilização para layouts de Radio e Checkbox */
+        .form-group-row {
+            margin-bottom: 18px;
+        }
+
+        .form-group-row p {
+            margin-bottom: 8px;
+            color: #444444;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .radio-box, .checkbox-box {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding: 5px 0;
+        }
+
+        .radio-option, .checkbox-option {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        /* Customização sutil para o input de arquivo */
+        input[type="file"] {
+            padding: 5px 0;
+        }
+
+        /* --- Botão de Envio --- */
+        .btn-submit {
+            width: 100%;
+            padding: 12px;
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 6px; /* Requisito: Bordas arredondadas */
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+            margin-top: 10px;
+        }
+
+        /* Requisito: Hover nos botões */
+        .btn-submit:hover {
+            background-color: #004999;
+        }
+
+        /* Requisito: Efeito ao focar (:focus) no botão */
+        .btn-submit:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.4);
+        }
+
+        .btn-submit:active {
+            transform: scale(0.98);
+        }
+
+        /* --- Requisito: Responsividade --- */
+        @media (max-width: 480px) {
+            .form-container {
+                padding: 20px;
+            }
+            
+            h2 {
+                font-size: 1.4rem;
+                margin-bottom: 20px;
+            }
+
+            .radio-box, .checkbox-box {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Cadastro de Aluno</h2>
+        
+        <form action="#" method="POST">
+            
+            <div class="form-group">
+                <label for="nome">Nome Completo</label>
+                <input type="text" id="nome" name="nome" class="form-control" placeholder="Digite seu nome completo" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" class="form-control" placeholder="exemplo@email.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" name="senha" class="form-control" placeholder="Crie uma senha segura" required>
+            </div>
+
+            <div class="form-group">
+                <label for="data-nascimento">Data de Nascimento</label>
+                <input type="date" id="data-nascimento" name="data_nascimento" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="curso">Curso</label>
+                <select id="curso" name="curso" class="form-control" required>
+                    <option value="" disabled selected>Selecione seu curso</option>
+                    <option value="engenharia-software">Engenharia de Software</option>
+                    <option value="ciencia-computacao">Ciência da Computação</option>
+                    <option value="sistemas-informacao">Sistemas de Informação</option>
+                </select>
+            </div>
+
+            <div class="form-group-row">
+                <p>Sexo</p>
+                <div class="radio-box">
+                    <label class="radio-option">
+                        <input type="radio" name="sexo" value="masculino" required> Masculino
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="sexo" value="feminino"> Feminino
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="sexo" value="outro"> Outro
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group-row">
+                <p>Áreas de Interesse</p>
+                <div class="checkbox-box">
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="interesses" value="backend"> Backend
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="interesses" value="frontend"> Frontend
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="interesses" value="dados"> Banco de Dados
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="comentarios">Comentários / Observações</label>
+                <textarea id="comentarios" name="comentarios" class="form-control" rows="4" placeholder="Deixe suas observações aqui..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="foto">Upload de Foto de Perfil</label>
+                <input type="file" id="foto" name="foto" accept="image/*">
+            </div>
+
+            <button type="submit" class="btn-submit">Enviar Cadastro</button>
+
+        </form>
+    </div>
+
+</body>
+</html>
